@@ -151,7 +151,7 @@ impl VerifierState {
                     let next_memory = self.store_in_addr(addr, 4, o, memory);
                     memory = next_memory;
                 }
-                _ => todo!(),
+                _ => unimplemented!("{stmt:?}"),
             }
         }
         memory

@@ -1,11 +1,15 @@
 #[no_mangle]
 fn left(x: i32, y: i32) -> i32 {
-    x + y + 1
+    x + y
 }
 
 #[no_mangle]
 fn right(x: i32, y: i32) -> i32 {
-    x + 1 + y
+    if x < y {
+        x + y
+    } else {
+        y - x
+    }
 }
 
 fn main() {}
