@@ -1,0 +1,10 @@
+[package]
+name = "llvm-transform-checker"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+llvm-ir = { version = "0.11.0", features = ["llvm-17"] }
+llvm-sys = { version = "170.0.1", features = ["prefer-dynamic"] }

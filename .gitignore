@@ -1,0 +1,8 @@
+/target
+playground/playground
+playground/playground.bc
+playground/playground.ll
+z3-model
+z3-model-simplified
+z3-query
+z3-result
