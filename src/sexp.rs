@@ -1,6 +1,31 @@
+use pretty::{Doc, RcDoc};
+
+#[derive(Debug, Clone)]
 pub enum Sexp {
     Atom(String),
     List(Vec<Sexp>),
+}
+
+impl Sexp {
+    /// Return a pretty printed format of self.
+    pub fn to_doc(&self) -> RcDoc<()> {
+        match *self {
+            Self::Atom(ref x) => RcDoc::as_string(x),
+            Self::List(ref xs) => RcDoc::text("(")
+                .append(
+                    RcDoc::intersperse(xs.into_iter().map(|x| x.to_doc()), Doc::line())
+                        .nest(1)
+                        .group(),
+                )
+                .append(RcDoc::text(")")),
+        }
+    }
+
+    pub fn to_pretty(&self, width: usize) -> String {
+        let mut w = Vec::new();
+        self.to_doc().render(width, &mut w).unwrap();
+        String::from_utf8(w).unwrap()
+    }
 }
 
 impl Sexp {
